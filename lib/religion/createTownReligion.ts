@@ -28,14 +28,17 @@ export const rankProbabilities: Record<DeityRank, number> = {
 
 const getDeityWeightFromRace = (town: Town, deity: Deity) => {
   logger.info(`Getting the weight for ${deity.name}`)
+
   let probability = rankProbabilities[deity.rank] || 10
-  for (const key of Object.keys(town.demographicPercentile)) {
+/*  for (const race of Object.keys(town.demographicPercentile)) {
     const race = key as RaceName
     if (deity?.probabilityWeightings?.race?.[race]) {
       const raceWeight = deity.probabilityWeightings.race[race]
       if (raceWeight) probability += calcPercentage(raceWeight, town.demographicPercentile[race])
     }
   }
+}*/
+    logger.info(`Got the weight for ${deity.name}: ${probability}`)
   return probability
 }
 
